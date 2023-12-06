@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    cursor: url(images/rsz_aim.png),crosshair;
+}
+.gameBoard {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(images/board-bg.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zombie {
+    background: url(images/walkingdead.png) 0px 0px;
+    height: 310px;
+    width: 200px;
+    position: absolute;
+    right: -100px;
+    bottom: 0px;
+}
+.hearts {
+    position: absolute;
+    left: 2%;
+    top:2%;
+}
+.heart {
+    width: 60px;
+}
+
+#points {
+    color: white;
+    font-size: 60px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: monospace; */
+    position: absolute;
+    right:2%;
+    top: 1%;
+}
+.start {
+    font-size: 7rem;
+    color: white;
+    text-align: center;
+}
+
+.invisible {
+    display: none;
+}
+.red {
+    color: red;
+}
+.custom-cursor{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+}
