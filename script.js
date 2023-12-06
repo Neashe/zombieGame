@@ -11,13 +11,12 @@ var gameLoop;
 
 class Zombie {
 
-    static positionChange = 200;
-
     constructor() {
         this.speed = Math.random()*100+50;
         this.size = Math.random()*0.5 + 0.7;
-        this.position = 1800;
         this.element = document.createElement('div');
+        this.distance = -100;
+        this.element.style.animationDuration = `${this.speed/200}`
         this.element.zombieInstance = this;
         
         this.element.style.transform = `scale(${this.size})`;
@@ -25,32 +24,35 @@ class Zombie {
         gameBoard.appendChild(this.element);
         this.animate();
     }
-
     animate() {
-        this.intervalId = setInterval(() => {
-            this.element.style.backgroundPosition = `${this.position}px 0px`;
-            this.element.style.right = `${parseInt(getComputedStyle(this.element).right)+this.speed/5}px`;
-            this.position -=Zombie.positionChange;
-            if (this.position<0){
-                this.position = 1800;
-            }
-            if (parseInt(getComputedStyle(this.element).left) < -200){
-                if (hearts > 0){
+        this.moveZombie();
+    }
+
+    moveZombie() {
+        const move = () => {
+            this.distance += this.speed/20;
+            this.element.style.right = `${this.distance}px`;
+
+            if (parseInt(getComputedStyle(this.element).left) < -200) {
+                if (hearts > 0) {
                     loseHeart();
-                    if (hearts == 0){
+                    if (hearts === 0) {
                         gameOver();
                     }
                 }
                 this.destroy();
             }
-        },100);
+
+            requestAnimationFrame(move);
+        };
+
+        move();
     }
 
     destroy() {
         clearInterval(this.intervalId);
         this.element.remove();
     }
-
 
 }
 function shoot(event) {

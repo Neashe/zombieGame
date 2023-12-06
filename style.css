@@ -1,7 +1,7 @@
 body {
     margin: 0;
     overflow: hidden;
-    cursor: url(images/rsz_aim.png),crosshair;
+    cursor: url(images/aim.png),crosshair;
 }
 .gameBoard {
     height: 100vh;
@@ -20,6 +20,7 @@ body {
     position: absolute;
     right: -100px;
     bottom: 0px;
+    animation: walk 1s steps(10) infinite;
 }
 .hearts {
     position: absolute;
@@ -34,7 +35,6 @@ body {
     color: white;
     font-size: 60px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    /* font-family: monospace; */
     position: absolute;
     right:2%;
     top: 1%;
@@ -56,3 +56,19 @@ body {
     height: 32px;
     position: absolute;
 }
+
+
+@keyframes walk {
+    100%{
+        background-position: -2000px,0;
+    }
+}
+@keyframes moveLeft {
+    0% {
+        right: -100px;
+    }
+    100% {
+        right: 0;
+    }
+}
+
